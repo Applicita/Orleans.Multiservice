@@ -1,4 +1,4 @@
 # <img src="img/CSharp-Toolkit-Icon.png" alt="Backend Toolkit" width="64px" />Orleans.Multiservice
-Low-friction logical service separation in Microsoft Orleans 7: avoid or postpone the development overhead of separate microservices
+Avoid or postpone the overhead of separate microservices with frictionless logical service separation in Microsoft Orleans 7
 
 *WIP - initial release eta Nov 2022*
