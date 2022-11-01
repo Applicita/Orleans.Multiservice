@@ -1,4 +1,4 @@
-﻿namespace Apis.Catalog;
+﻿namespace Applicita.eShop.Apis.Catalog;
 
 [ApiController]
 [Route("[controller]")]

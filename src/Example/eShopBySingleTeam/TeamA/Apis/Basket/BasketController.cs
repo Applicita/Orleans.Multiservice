@@ -1,4 +1,4 @@
-﻿namespace Apis.Basket;
+﻿namespace Applicita.eShop.Apis.Basket;
 
 [ApiController]
 [Route("[controller]")]
