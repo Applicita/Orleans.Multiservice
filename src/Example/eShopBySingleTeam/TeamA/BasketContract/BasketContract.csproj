@@ -10,14 +10,11 @@
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 
         <AssemblyName>Applicita.eShop.$(MSBuildProjectName)</AssemblyName>
+        <RootNamespace>Applicita.eShop.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Orleans.Sdk" Version="7.0.0-rc2" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Basket.Contract\Basket.Contract.csproj" />
     </ItemGroup>
 
 </Project>

@@ -10,6 +10,7 @@
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
         
         <AssemblyName>Applicita.eShop.$(MSBuildProjectName).TeamA</AssemblyName>
+        <RootNamespace>Applicita.eShop.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -25,8 +26,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Basket.Service\Basket.Service.csproj" />
-        <ProjectReference Include="..\Catalog.Service\Catalog.Service.csproj" />
+        <ProjectReference Include="..\BasketService\BasketService.csproj" />
+        <ProjectReference Include="..\CatalogService\CatalogService.csproj" />
     </ItemGroup>
 
 </Project>

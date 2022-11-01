@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net7.0</TargetFramework>
@@ -10,6 +10,7 @@
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 
         <AssemblyName>Applicita.eShop.$(MSBuildProjectName)</AssemblyName>
+        <RootNamespace>Applicita.eShop.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
