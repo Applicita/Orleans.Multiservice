@@ -1,4 +1,11 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Orleans.Hosting;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseOrleans((_, silo) => silo
+    .UseLocalhostClustering()
+    .AddMemoryGrainStorageAsDefault()
+);
 
 // Add services to the container.
 
@@ -11,11 +18,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
-{
-    _ = app
-        .UseSwagger()
-        .UseSwaggerUI();
-}
+    _ = app.UseSwagger().UseSwaggerUI();
 
 app.UseAuthorization();
 
