@@ -8,6 +8,8 @@
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <AnalysisLevel>preview-All</AnalysisLevel>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        
+        <AssemblyName>Applicita.eShop.$(MSBuildProjectName).TeamA</AssemblyName>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
