@@ -25,7 +25,7 @@ sealed class CatalogGrain : Grain, ICatalogGrain
 
     public Task<ImmutableArray<Product>> GetAllProducts() => Task.FromResult(ImmutableArray.CreateRange(catalog.State.Products));
 
-    public async Task UpdateProduct(Product product)
+    public async Task<bool> UpdateProduct(Product product)
     {
         var products = catalog.State.Products;
         for (int i = 0; i < products.Count; i++)
@@ -34,13 +34,13 @@ sealed class CatalogGrain : Grain, ICatalogGrain
             {
                 products[i] = product;
                 await catalog.WriteStateAsync();
-                return;
+                return true;
             }
         }
-        throw new ArgumentException($"Product id {product.Id} not found");
+        return false;
     }
 
-    public async Task DeleteProduct(int id)
+    public async Task<bool> DeleteProduct(int id)
     {
         var products = catalog.State.Products;
         for (int i = 0; i < products.Count; i++)
@@ -49,9 +49,9 @@ sealed class CatalogGrain : Grain, ICatalogGrain
             {
                 products.RemoveAt(i);
                 await catalog.WriteStateAsync();
-                return;
+                return true;
             }
         }
-        throw new ArgumentException($"Product id {id} not found");
+        return false;
     }
 }

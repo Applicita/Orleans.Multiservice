@@ -1,4 +1,5 @@
-﻿using Orleans.Hosting;
+﻿using Microsoft.OpenApi.Models;
+using Orleans.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,18 +8,17 @@ builder.Host.UseOrleans((_, silo) => silo
     .AddMemoryGrainStorageAsDefault()
 );
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options => {
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Example eShop API by single team", Version = "v1" });
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
-    _ = app.UseSwagger().UseSwaggerUI();
+    _ = app.UseSwagger().UseSwaggerUI(options => options.EnableTryItOutByDefault());
 
 app.UseAuthorization();
 

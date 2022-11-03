@@ -5,8 +5,12 @@ namespace Applicita.eShop.BasketContract;
 
 [GenerateSerializer, Immutable]
 public record Basket(
-    [property: Id(0)] int BuyerId, 
-    [property: Id(1)] ImmutableArray<BasketItem> Items);
+    [property: Id(0)] int BuyerId,
+    [property: Id(1)] ImmutableArray<BasketItem> Items)
+{
+    public const int NoBuyer = -1;
+    public Basket() : this(NoBuyer, ImmutableArray<BasketItem>.Empty) { } // Default ctor is needed for deserializing records with a collection property in API
+};
 
 [GenerateSerializer, Immutable]
 public record BasketItem(
