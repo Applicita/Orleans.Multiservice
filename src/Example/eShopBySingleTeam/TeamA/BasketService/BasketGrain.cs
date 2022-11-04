@@ -46,7 +46,7 @@ sealed class BasketGrain : Grain, IBasketGrain
 
     public async Task EmptyBasket() 
     {
-        Basket = Basket with { Items = new() };
+        Basket = Basket with { Items = ImmutableArray<BasketItem>.Empty };
         await state.WriteStateAsync();
     }
 
