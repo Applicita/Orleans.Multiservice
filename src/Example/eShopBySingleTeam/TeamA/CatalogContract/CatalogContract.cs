@@ -15,6 +15,9 @@ public interface ICatalogGrain : IGrainWithStringKey
 
     Task<ImmutableArray<Product>> GetAllProducts();
 
+    /// <returns>Products for all <paramref name="productIds"/> currently in the catalog; unknown product id's are skipped</returns>
+    Task<ImmutableArray<Product>> GetCurrentProducts(ImmutableArray<int> productIds);
+
     /// <returns>True if <paramref name="product"/> is updated, false if the <paramref name="product"/> <see cref="Product.Id"/> is not found </returns>
     Task<bool> UpdateProduct(Product product);
 

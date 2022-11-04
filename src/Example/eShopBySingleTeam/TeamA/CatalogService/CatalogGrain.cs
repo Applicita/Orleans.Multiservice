@@ -25,6 +25,13 @@ sealed class CatalogGrain : Grain, ICatalogGrain
 
     public Task<ImmutableArray<Product>> GetAllProducts() => Task.FromResult(ImmutableArray.CreateRange(catalog.State.Products));
 
+    public Task<ImmutableArray<Product>> GetCurrentProducts(ImmutableArray<int> productIds)
+    {
+        var products = catalog.State.Products;
+        var currentProducts = productIds.Select(id => products.FirstOrDefault(p => p.Id == id)).OfType<Product>();
+        return Task.FromResult(currentProducts.ToImmutableArray());
+    }
+
     public async Task<bool> UpdateProduct(Product product)
     {
         var products = catalog.State.Products;

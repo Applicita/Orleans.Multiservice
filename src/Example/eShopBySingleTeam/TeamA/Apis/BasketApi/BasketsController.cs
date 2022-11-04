@@ -19,11 +19,11 @@ public class BasketsController : ControllerBase
     public async Task<ActionResult<Basket>> GetBasket(int buyerId)
         => Ok(await BasketGrain(buyerId).GetBasket());
 
-    /// <response code="200">The basket is updated</response>
+    /// <response code="200">The updated basket is returned, with items updated from the current products in the Catalog service</response>
     [HttpPut()]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult> UpdateBasket(Basket basket)
-    { await BasketGrain(basket.BuyerId).UpdateBasket(basket); return Ok(); }
+    public async Task<ActionResult<Basket>> UpdateBasket(Basket basket)
+        => Ok(await BasketGrain(basket.BuyerId).UpdateBasket(basket));
 
     /// <response code="200">The basket of buyerId is emptied</response>
     [HttpDelete(Basket)]
