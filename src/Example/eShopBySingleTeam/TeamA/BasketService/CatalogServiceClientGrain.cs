@@ -21,7 +21,7 @@ sealed class CatalogServiceClientGrain : Grain, ICatalogServiceClientGrain
         var products = await catalog.GetCurrentProducts(productIds);
 
         List<BasketItem> updatedItems = new();
-        foreach (var item in basketItems) 
+        foreach (var item in basketItems)
         {
             var product = products.SingleOrDefault(p => p.Id == item.ProductId);
             if (product is null) continue;

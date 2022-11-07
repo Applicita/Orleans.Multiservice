@@ -27,7 +27,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\BasketService\BasketService.csproj" />
-        <ProjectReference Include="..\CatalogService\CatalogService.csproj" />
     </ItemGroup>
 
 </Project>
