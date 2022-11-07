@@ -9,7 +9,7 @@
         <AnalysisLevel>preview-All</AnalysisLevel>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 
-        <AssemblyName>Applicita.eShop.$(MSBuildProjectName).TeamA</AssemblyName>
+        <AssemblyName>Applicita.eShop.$(MSBuildProjectName).TeamB</AssemblyName>
         <RootNamespace>Applicita.eShop.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     </PropertyGroup>
 
