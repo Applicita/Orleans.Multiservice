@@ -12,11 +12,11 @@ interface ICatalogServiceClientGrain : IGrainWithIntegerKey
 [StatelessWorker]
 sealed class CatalogServiceClientGrain : Grain, ICatalogServiceClientGrain
 {
-    CatalogContract.ICatalogGrain? catalog;
+    Contracts.CatalogContract.ICatalogGrain? catalog;
 
     public async Task<ImmutableArray<BasketItem>> UpdateFromCurrentProducts(ImmutableArray<BasketItem> basketItems)
     {
-        catalog ??= GrainFactory.GetGrain<CatalogContract.ICatalogGrain>(CatalogContract.ICatalogGrain.Key);
+        catalog ??= GrainFactory.GetGrain<Contracts.CatalogContract.ICatalogGrain>(Contracts.CatalogContract.ICatalogGrain.Key);
         var productIds = basketItems.Select(bi => bi.ProductId).ToImmutableArray();
         var products = await catalog.GetCurrentProducts(productIds);
 

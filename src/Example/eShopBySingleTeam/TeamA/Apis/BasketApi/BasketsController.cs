@@ -1,4 +1,4 @@
-﻿using Applicita.eShop.BasketContract;
+﻿using Applicita.eShop.Contracts.BasketContract;
 
 namespace Applicita.eShop.Apis.BasketApi;
 

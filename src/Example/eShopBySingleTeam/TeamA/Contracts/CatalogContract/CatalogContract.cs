@@ -1,4 +1,4 @@
-﻿namespace Applicita.eShop.CatalogContract;
+﻿namespace Applicita.eShop.Contracts.CatalogContract;
 
 [GenerateSerializer, Immutable]
 public record Product(

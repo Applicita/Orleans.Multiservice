@@ -1,7 +1,7 @@
 ﻿using System.Collections.Immutable;
 using System.Globalization;
 
-namespace Applicita.eShop.BasketContract;
+namespace Applicita.eShop.Contracts.BasketContract;
 
 [GenerateSerializer, Immutable]
 public record Basket(

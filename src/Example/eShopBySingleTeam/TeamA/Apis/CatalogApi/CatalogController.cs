@@ -1,5 +1,5 @@
 ﻿using System.Collections.Immutable;
-using Applicita.eShop.CatalogContract;
+using Applicita.eShop.Contracts.CatalogContract;
 
 namespace Applicita.eShop.Apis.CatalogApi;
 

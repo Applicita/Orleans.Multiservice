@@ -1,3 +1,3 @@
 ﻿global using Orleans;
 global using Orleans.Runtime;
-global using Applicita.eShop.BasketContract;
+global using Applicita.eShop.Contracts.BasketContract;
