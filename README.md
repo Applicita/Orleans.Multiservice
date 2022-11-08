@@ -7,12 +7,6 @@ Benefits: allows development teams to avoid significant development overhead / f
 - of microservices before they are needed (if ever)
 - of refactoring when the time has come to move one or more logical services to a separate microservice
 
-TODO
-observig single teams with many microservices - often not needed
-This pattern originated from the  The insights about This pattern was developed from insigth
-Conway's law!
-
-
 ## What it is
 Orleans.Multiservice consists of:
 - An example application that demonstrates the pattern in 2 stages of the application's life cycle:
