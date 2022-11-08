@@ -4,8 +4,8 @@ Prevent microservices pain with logical service separation for Microsoft Orleans
 Orleans.Multiservice is an automated code structuring pattern for logical service separation within a Microsoft Orleans microservice.
 
 Benefits: allows development teams to avoid significant development overhead / friction common in microservices applications:
-- of microservices before they are needed (if ever)
-- of refactoring when the time has come to move one or more logical services to a separate microservice
+- of too many microservices before they are needed (if ever)
+- of refactoring when the time has come to move part of the application to a separate microservice
 
 ## Background
 It is not uncommon to find single development teams that maintain multiple microservices. A benefit of microservices is that they can be deployed independently. However, a single team typically has a single deployment rhythm (e.g. in sync with a sprint) and therefore usually deploys their services together.
