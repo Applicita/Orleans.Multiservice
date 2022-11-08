@@ -7,6 +7,14 @@ Benefits: allows development teams to avoid significant development overhead / f
 - of microservices before they are needed (if ever)
 - of refactoring when the time has come to move one or more logical services to a separate microservice
 
+## Background
+It is not uncommon to find single development teams that maintain multiple microservices. A benefit of microservices is that they can be deployed independently. However, a single team typically has a single deployment rhythm (e.g. in sync with a sprint) and therefore usually deploys their services together.
+Orleans allows to build distributed applications using grains, that have grain contracts - C# interfaces. These can be considered a kind of 'nano services'
+
+By grouping Grains and their contracts into logical services within an Orleans microservice, teams can avoid and postpone the development friction that microservice separation brings until the moment that physical separation is actually needed - e.g. when adding more teams or when dependencies diverge. Even then, the total microservices count can be much lower; many teams will need no more than a single microservice.
+
+Orleans.Multiservice leverages Microsoft Orleans and [Conway's law](https://en.wikipedia.org/wiki/Conway%27s_law) to make life better for developers building distributed (microservices) applications. NJoy!
+
 ## What it is
 Orleans.Multiservice consists of:
 - An example application that demonstrates the pattern in 2 stages of the application's life cycle:
