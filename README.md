@@ -9,9 +9,12 @@ Benefits: allows development teams to avoid significant development overhead / f
 
 ## Background
 It is not uncommon to find single development teams that maintain multiple microservices. A benefit of microservices is that they can be deployed independently. However, a single team typically has a single deployment rhythm (e.g. in sync with a sprint) and therefore usually deploys their services together.
-Orleans allows to build distributed applications using grains, that have grain contracts - C# interfaces. These can be considered a kind of 'nano services'
 
-By grouping Grains and their contracts into logical services within an Orleans microservice, teams can avoid and postpone the development friction that microservice separation brings until the moment that physical separation is actually needed - e.g. when adding more teams or when dependencies diverge. Even then, the total microservices count can be much lower; many teams will need no more than a single microservice.
+So a lot of development effort can be avoided by structuring the application as a single modular microservice that is designed to be split up with little effort - if and when that is actually becomes necessary.
+- See [this article](https://www.fearofoblivion.com/build-a-modular-monolith-first) for more details on the development overhead of microservices
+- See [this Orleans meetup video](https://www.youtube.com/watch?v=dWwxKHclco8) for a real world project where this approach was introduced
+
+Microsoft Orleans allows to build distributed applications using grains, that have grain contracts - C# interfaces. These grains can be considered a kind of 'nano services'. By grouping Grains and their contracts into logical services within an Orleans microservice, teams can avoid and postpone the development friction that microservice separation brings until the moment that physical separation is actually needed - e.g. when adding more teams or when dependencies diverge. Even then, the total microservices count can be much lower; many teams will need no more than a single microservice.
 
 Orleans.Multiservice leverages Microsoft Orleans and [Conway's law](https://en.wikipedia.org/wiki/Conway%27s_law) to make life better for developers building distributed (microservices) applications. NJoy!
 
