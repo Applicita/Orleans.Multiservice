@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Applicita.eShop.Contracts.BasketContract;
 
@@ -15,10 +14,13 @@ public record BasketItem(
     [property: Id(2)] decimal UnitPrice, 
     [property: Id(3)] int Quantity);
 
+public static class GrainFactoryExtensions
+{
+    public static IBasketGrain GetBasketGrain(this IGrainFactory factory, int buyerId) => factory.GetGrain<IBasketGrain>(buyerId.ToString(CultureInfo.InvariantCulture));
+}
+
 public interface IBasketGrain : IGrainWithStringKey
 {
-    static string Key(int buyerId) => buyerId.ToString(CultureInfo.InvariantCulture);
-
     Task<Basket> GetBasket();
 
     Task<Basket> UpdateBasket(Basket basket);

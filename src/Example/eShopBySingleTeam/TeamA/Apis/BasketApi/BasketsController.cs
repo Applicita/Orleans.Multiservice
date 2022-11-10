@@ -32,5 +32,5 @@ public class BasketsController : ControllerBase
     { await BasketGrain(buyerId).EmptyBasket(); return Ok(); }
 
     IBasketGrain BasketGrain(int buyerId)
-        => orleans.GetGrain<IBasketGrain>(IBasketGrain.Key(buyerId));
+        => orleans.GetBasketGrain(buyerId);
 }

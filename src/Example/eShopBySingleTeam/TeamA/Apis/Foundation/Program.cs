@@ -1,5 +1,4 @@
 ﻿using Microsoft.OpenApi.Models;
-using Orleans.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
