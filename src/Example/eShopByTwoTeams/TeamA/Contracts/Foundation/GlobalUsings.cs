@@ -1,2 +1,1 @@
-﻿global using Orleans;
-global using System.Collections.Immutable;
+﻿global using System.Collections.Immutable;

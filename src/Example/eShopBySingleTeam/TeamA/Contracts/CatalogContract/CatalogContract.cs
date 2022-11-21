@@ -1,11 +1,5 @@
 ﻿namespace Applicita.eShop.Contracts.CatalogContract;
 
-[GenerateSerializer, Immutable]
-public record Product(
-    [property: Id(0)] int Id, 
-    [property: Id(1)] string Name, 
-    [property: Id(2)] decimal Price);
-
 public interface ICatalogGrain : IGrainWithStringKey
 {
     const string Key = "";
@@ -24,3 +18,9 @@ public interface ICatalogGrain : IGrainWithStringKey
     /// <returns>True if <paramref name="id"/> is updated, false if the product <paramref name="id"/> is not found </returns>
     Task<bool> DeleteProduct(int id);
 }
+
+[GenerateSerializer, Immutable]
+public record Product(
+    [property: Id(0)] int Id,
+    [property: Id(1)] string Name,
+    [property: Id(2)] decimal Price);
