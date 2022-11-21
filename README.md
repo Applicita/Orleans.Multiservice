@@ -49,7 +49,7 @@ Orleans.Multiservice consists of:
 
 3) To create a new multiservice with one logical service in it, type e.g.:
     ```
-    dotnet new mcs-orleans-multiservice --RootNamespace Applicita.eShop --Multiservice TeamA --Logicalservice Catalog
+    dotnet new mcs-orleans-multiservice --RootNamespace Applicita.eShop --Multiservice TeamA --Logicalservice Catalog --allow-scripts Yes
     ```
 
 4) To add a logical service to an existing multiservice solution, type e.g. this command in PowerShell while in the solution folder:
