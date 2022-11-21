@@ -1,20 +1,22 @@
 # <img src="img/CSharp-Toolkit-Icon.png" alt="Backend Toolkit" width="64px" />Orleans.Multiservice
 Prevent microservices pain with logical service separation for [Microsoft Orleans 7](https://github.com/dotnet/orleans/releases/tag/v7.0.0)
 
-Orleans.Multiservice is an automated code structuring pattern for logical service separation within a Microsoft Orleans microservice.
+Orleans.Multiservice is an automated code structuring pattern for logical service separation within a Microsoft Orleans (micro)service.
 
 Benefits: allows development teams to avoid significant development overhead / friction common in microservices applications:
 - of too many microservices before they are needed (if ever)
 - of refactoring when the time has come to move part of the application to a separate microservice
 
+Included in [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Modern.CSharp.Templates?color=gold&label=NuGet:%20Modern.CSharp.Templates&style=plastic)](https://www.nuget.org/packages/Modern.CSharp.Templates) (see [below](#template-usage))
+
 ## Background
 It is not uncommon to find single development teams that maintain multiple microservices. A benefit of microservices is that they can be deployed independently. However, a single team typically has a single deployment rhythm (e.g. in sync with a sprint) and therefore usually deploys their services together.
 
-So a lot of development effort can be avoided by structuring the application as a single modular microservice that is designed to be split up with little effort - if and when that is actually becomes necessary.
+So a lot of development effort can be avoided by structuring the application as a single modular (micro)service that is designed to be split up with little effort - if and when that is actually becomes necessary.
 - See [this article](https://www.fearofoblivion.com/build-a-modular-monolith-first) for more details on the development overhead of microservices
 - See [this Orleans meetup video](https://www.youtube.com/watch?v=dWwxKHclco8) for a real world project where this approach was introduced
 
-Microsoft Orleans allows to build distributed applications using grains, that have grain contracts - C# interfaces. These grains can be considered a kind of 'nano services'. By grouping Grains and their contracts into logical services within an Orleans microservice, teams can avoid and postpone the development friction that microservice separation brings until the moment that physical separation is actually needed - e.g. when adding more teams or when dependencies diverge. Even then, the total microservices count can be much lower; many teams will need no more than a single microservice.
+Microsoft Orleans allows to build distributed applications using grains, that have grain contracts - C# interfaces. These grains can be considered a kind of 'nano services'. By grouping Grains and their contracts into logical services within an Orleans (micro)service, teams can avoid and postpone the development friction that microservice separation brings until the moment that physical separation is actually needed - e.g. when adding more teams or when dependencies diverge. Even then, the total microservices count can be much lower; many teams will need no more than a single microservice.
 
 Orleans.Multiservice leverages Microsoft Orleans and [Conway's law](https://en.wikipedia.org/wiki/Conway%27s_law) to make life better for developers building distributed (microservices) applications. NJoy!
 
@@ -27,10 +29,29 @@ Orleans.Multiservice consists of:
   2) Then a second team is added that will become owner of one of the logical services. A second microservice is added and one logical service is moved into that (in a real world application this could also be moving 5 out of 10 logical services to a second microservice)<br />
      Source: [Two Team/Microservice eShop](https://github.com/Applicita/Orleans.Multiservice/tree/main/src/Example/eShopByTwoTeams)
 
-- `dotnet new` templates to set up a new multiservice, and to add a logical service in an existing multiservice
+- A `dotnet new mcs-orleans-multiservice` template to set up a new multiservice, and to add a logical service in an existing multiservice
+
 - A Roslyn code analyzer to ensure that the pattern is preserved during development. It ensures that the [pattern rules](#pattern-rules) are followed while coding, building and in CI
 
-> The templates and the code analyzer are expected to be released in Nov 2022. Note that the pattern can be used without them by following the code structure in the example and the [pattern rules](#pattern-rules)
+> The code analyzer is expected to be Completed in Dec 2022. Note that the multiservice pattern can be used without them by following the code structure in the example and the [pattern rules](#pattern-rules)
+
+## Template usage
+1) On the command line, ensure that the [mcs-orleans-multiservice template](https://github.com/Applicita/Modern.CSharp.Templates#readme) is installed<br />(note that below is .NET 7 cli syntax; Orleans 7 requires .NET 7):
+    ```
+    dotnet new install Modern.CSharp.Templates
+    ```
+    **Note** that the `dotnet new mcs-orleans-multiservice` template requires **PowerShell** to be installed
+
+2) Type this command to read the documentation for the template parameters:<br />
+  `dotnet new mcs-orleans-multiservice -h`
+
+3) To create a new multiservice with one logical service in it, type e.g.:<br />
+  `dotnet new mcs-orleans-multiservice --RootNamespace Applicita.eShop --Multiservice TeamA --Logicalservice Catalog`
+
+4) To add a logical service to an existing multiservice solution, type e.g. this command in PowerShell while in the solution folder:<br />
+  `.\AddLogicalService.ps1 Basket`
+
+These two short commands create the solution structure as seen in the single team example below. The solution is ready to run.
 
 ## Proof by Example: eShop
 The example in this repo illustrates how logical services within a microservice have very low development friction, and how little code needs to be changed when moving logical services to a separate microservice.
