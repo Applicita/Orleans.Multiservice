@@ -42,14 +42,20 @@ Orleans.Multiservice consists of:
     ```
     **Note** that the `dotnet new mcs-orleans-multiservice` template requires **PowerShell** to be installed
 
-2) Type this command to read the documentation for the template parameters:<br />
-  `dotnet new mcs-orleans-multiservice -h`
+2) Type this command to read the documentation for the template parameters:
+    ```
+    dotnet new mcs-orleans-multiservice -h
+    ```
 
-3) To create a new multiservice with one logical service in it, type e.g.:<br />
-  `dotnet new mcs-orleans-multiservice --RootNamespace Applicita.eShop --Multiservice TeamA --Logicalservice Catalog`
+3) To create a new multiservice with one logical service in it, type e.g.:
+    ```
+    dotnet new mcs-orleans-multiservice --RootNamespace Applicita.eShop --Multiservice TeamA --Logicalservice Catalog
+    ```
 
-4) To add a logical service to an existing multiservice solution, type e.g. this command in PowerShell while in the solution folder:<br />
-  `.\AddLogicalService.ps1 Basket`
+4) To add a logical service to an existing multiservice solution, type e.g. this command in PowerShell while in the solution folder:
+    ```
+    .\AddLogicalService.ps1 Basket
+    ```
 
 These two short commands create the solution structure as seen in the single team example below. The solution is ready to run.
 
