@@ -33,7 +33,7 @@ Orleans.Multiservice consists of:
 
 - A Roslyn code analyzer to ensure that the pattern is preserved during development. It is used in the template to ensures that the [pattern rules](#pattern-rules) are followed while coding, building and in CI
 
-> The code analyzer is expected to be released in Dec 2022. Note that the multiservice pattern can be used without them by following the code structure in the example and the [pattern rules](#pattern-rules)
+> The code analyzer is expected to be released in Dec 2022. Note that the multiservice pattern can be used without the analyzer by following the code structure of the template and the [pattern rules](#pattern-rules)
 
 ## Template usage
 1) On the command line, ensure that the [mcs-orleans-multiservice template](https://github.com/Applicita/Modern.CSharp.Templates#readme) is installed<br />(note that below is .NET 7 cli syntax; Orleans 7 requires .NET 7):
