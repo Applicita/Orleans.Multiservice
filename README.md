@@ -31,9 +31,9 @@ Orleans.Multiservice consists of:
 
 - A `dotnet new mcs-orleans-multiservice` template to set up a new multiservice, and to add a logical service in an existing multiservice
 
-- A Roslyn code analyzer to ensure that the pattern is preserved during development. It is used in the template to ensures that the [pattern rules](#pattern-rules) are followed while coding, building and in CI
+- A Roslyn code analyzer and/or unit tests to ensure that the pattern is preserved during development. It is used in the template to ensures that the [pattern rules](#pattern-rules) are followed while coding, building and in CI
 
-> The code analyzer is expected to be released in Dec 2022. Note that the multiservice pattern can be used without the analyzer by following the code structure of the template and the [pattern rules](#pattern-rules)
+> The code analyzer / unit tests will be added in a future release. Note that the multiservice pattern can be used without the analyzer by following the code structure of the template and the [pattern rules](#pattern-rules)
 
 ## Template usage
 1) On the command line, ensure that the [mcs-orleans-multiservice template](https://github.com/Applicita/Modern.CSharp.Templates#readme) is installed<br />(note that below is .NET 7 cli syntax; Orleans 7 requires .NET 7):
@@ -96,6 +96,7 @@ A common scenario is:
 ## Pattern rules
 These rules ensure that the pattern remains intact:
 1) The **only** project references allowed are:<br />
+   `Apis     -> Contracts`<br />
    `Apis     -> *Service`<br />
    `*Service -> Contracts`
 
