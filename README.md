@@ -7,14 +7,13 @@ Benefits: allows development teams to avoid significant development overhead / f
 - of too many microservices before they are needed (if ever)
 - of refactoring when the time has come to move part of the application to a separate microservice
 
-Also see: [MonolithFirst by Martin Fowler](https://martinfowler.com/bliki/MonolithFirst.html)
-
 Included in [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Modern.CSharp.Templates?color=gold&label=NuGet:%20Modern.CSharp.Templates&style=plastic)](https://www.nuget.org/packages/Modern.CSharp.Templates) (see [template usage](#template-usage) to get started)
 
 ## Background
 It is not uncommon to find single development teams that maintain multiple microservices. A benefit of microservices is that they can be deployed independently. However, a single team typically has a single deployment rhythm (e.g. in sync with a sprint) and therefore usually deploys their services together.
 
-So a lot of development effort can be avoided by structuring the application as a single modular (micro)service that is designed to be split up with little effort - if and when that is actually becomes necessary.
+So a lot of development effort can be avoided by structuring the application as a single modular (micro)service that is designed to be split up with little effort - if and when that actually becomes necessary.
+- See [MonolithFirst by Martin Fowler](https://martinfowler.com/bliki/MonolithFirst.html)
 - See [this article](https://www.fearofoblivion.com/build-a-modular-monolith-first) for more details on the development overhead of microservices
 - See [this Orleans meetup video](https://www.youtube.com/watch?v=dWwxKHclco8) for a real world project where this approach was introduced
 
