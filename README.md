@@ -1,5 +1,5 @@
 # <img src="img/CSharp-Toolkit-Icon.png" alt="Backend Toolkit" width="64px" />Orleans.Multiservice
-Prevent microservices pain with logical service separation for [Microsoft Orleans 7](https://github.com/dotnet/orleans/releases/tag/v7.0.0)
+Prevent microservices pain with logical service separation in a modular monolith for [Microsoft Orleans 7](https://learn.microsoft.com/en-us/dotnet/orleans/)
 
 Orleans.Multiservice is an automated code structuring pattern for logical service separation within a Microsoft Orleans (micro)service.
 
@@ -10,16 +10,16 @@ Benefits: allows development teams to avoid significant development overhead / f
 Included in [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Modern.CSharp.Templates?color=gold&label=NuGet:%20Modern.CSharp.Templates&style=plastic)](https://www.nuget.org/packages/Modern.CSharp.Templates) (see [template usage](#template-usage) to get started)
 
 ## Background
-It is not uncommon to find single development teams that maintain multiple microservices. A benefit of microservices is that they can be deployed independently. However, a single team typically has a single deployment rhythm (e.g. in sync with a sprint) and therefore usually deploys their services together.
+It is not uncommon to find single development teams that maintain multiple microservices, ignoring [Conway's Law](https://martinfowler.com/bliki/ConwaysLaw.html) to their detriment. A benefit of microservices is that they can be deployed independently. However, a single team typically has a single deployment rhythm (e.g. in sync with a sprint) and therefore usually deploys their services together.
 
-So a lot of development effort can be avoided by structuring the application as a single modular (micro)service that is designed to be split up with little effort - if and when that actually becomes necessary.
+A lot of development effort can be avoided by structuring the application as a single modular monolith that is designed to be split up with little effort - if and when that actually becomes necessary.
 - See [MonolithFirst by Martin Fowler](https://martinfowler.com/bliki/MonolithFirst.html)
 - See [this article](https://www.fearofoblivion.com/build-a-modular-monolith-first) for more details on the development overhead of microservices
 - See [this Orleans meetup video](https://www.youtube.com/watch?v=dWwxKHclco8) for a real world project where this approach was introduced
 
-Microsoft Orleans allows to build distributed applications using grains, that have grain contracts - C# interfaces. These grains can be considered a kind of 'nano services'. By grouping Grains and their contracts into logical services within an Orleans (micro)service, teams can avoid and postpone the development friction that microservice separation brings until the moment that physical separation is actually needed - e.g. when adding more teams or when dependencies diverge. Even then, the total microservices count can be much lower; many teams will need no more than a single microservice.
+Microsoft Orleans allows to build distributed applications using grains, which have grain contracts - C# interfaces. These grains can be considered a kind of 'nano services'. By grouping Grains and their contracts into logical services within an Orleans (micro)service, teams can avoid and postpone the development friction that microservice separation brings until the moment that physical separation is actually needed - e.g. when adding more teams or when dependencies diverge. Even then, the total microservices count can be much lower; many teams will need no more than a single microservice.
 
-Orleans.Multiservice leverages Microsoft Orleans and [Conway's law](https://en.wikipedia.org/wiki/Conway%27s_law) to make life better for developers building distributed (microservices) applications. NJoy!
+Orleans.Multiservice leverages Microsoft Orleans and [Conway's law](https://martinfowler.com/bliki/ConwaysLaw.html) to make life better for developers building distributed (microservices) applications. NJoy!
 
 ## What it is
 Orleans.Multiservice consists of:
