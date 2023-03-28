@@ -7,6 +7,8 @@ Benefits: allows development teams to avoid significant development overhead / f
 - of too many microservices before they are needed (if ever)
 - of refactoring when the time has come to move part of the application to a separate microservice
 
+Also see: [MonolithFirst by Martin Fowler](https://martinfowler.com/bliki/MonolithFirst.html)
+
 Included in [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/Modern.CSharp.Templates?color=gold&label=NuGet:%20Modern.CSharp.Templates&style=plastic)](https://www.nuget.org/packages/Modern.CSharp.Templates) (see [template usage](#template-usage) to get started)
 
 ## Background
