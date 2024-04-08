@@ -1,20 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        
-        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <AnalysisLevel>preview-All</AnalysisLevel>
-        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
 
-        <AssemblyName>Applicita.eShop.$(MSBuildProjectName).TeamA</AssemblyName>
-        <RootNamespace>Applicita.eShop.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
-    </PropertyGroup>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>preview-All</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.Orleans.Sdk" Version="8.0.0" />
-    </ItemGroup>
+    <NoWarn>$(NoWarn);EnableGenerateDocumentationFile</NoWarn>
+
+    <AssemblyName>Applicita.eShop.$(MSBuildProjectName).TeamA</AssemblyName>
+    <RootNamespace>Applicita.eShop.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.Sdk" Version="8.0.0" />
+  </ItemGroup>
 
 </Project>

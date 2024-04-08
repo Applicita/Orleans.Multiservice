@@ -4,14 +4,9 @@ namespace Applicita.eShop.Apis.BasketApi;
 
 [Route("[controller]")]
 [ApiController]
-public class BasketsController : ControllerBase
+public class BasketsController(IClusterClient orleans) : ControllerBase
 {
     const string Basket = "{buyerId}";
-
-    readonly IClusterClient orleans;
-
-    public BasketsController(IClusterClient orleans)
-        => this.orleans = orleans;
 
     /// <response code="200">The basket of buyerId is returned</response>
     [HttpGet(Basket)]
@@ -23,7 +18,9 @@ public class BasketsController : ControllerBase
     [HttpPut()]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<Basket>> UpdateBasket(Basket basket)
-        => Ok(await BasketGrain(basket.BuyerId).UpdateBasket(basket));
+        => basket is null
+        ? BadRequest("basket is required")
+        : Ok(await BasketGrain(basket.BuyerId).UpdateBasket(basket));
 
     /// <response code="200">The basket of buyerId is emptied</response>
     [HttpDelete(Basket)]

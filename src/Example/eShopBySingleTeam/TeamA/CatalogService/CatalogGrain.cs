@@ -2,18 +2,14 @@
 
 namespace Applicita.eShop.CatalogService;
 
-sealed class CatalogGrain : Grain, ICatalogGrain
+sealed class CatalogGrain([PersistentState("state")] IPersistentState<CatalogGrain.Catalog> catalog) : Grain, ICatalogGrain
 {
     [GenerateSerializer]
     internal sealed class Catalog
     {
         [Id(0)] public int NewProductId { get; set; } = 0;
-        [Id(1)] public List<Product> Products { get; set; } = new();
+        [Id(1)] public List<Product> Products { get; set; } = [];
     }
-
-    readonly IPersistentState<Catalog> catalog;
-
-    public CatalogGrain([PersistentState("state")] IPersistentState<Catalog> catalog) => this.catalog = catalog;
 
     public async Task<int> CreateProduct(Product product)
     {
