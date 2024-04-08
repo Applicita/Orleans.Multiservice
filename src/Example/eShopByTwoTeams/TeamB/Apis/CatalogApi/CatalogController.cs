@@ -5,15 +5,12 @@ namespace Applicita.eShop.Apis.CatalogApi;
 
 [Route("[controller]")]
 [ApiController]
-public class CatalogController : ControllerBase
+public class CatalogController(IClusterClient orleans) : ControllerBase
 {
     const string Products = "products";
     const string Product = Products + "/{id}";
 
-    readonly ICatalogGrain catalog;
-
-    public CatalogController(IClusterClient orleans)
-        => catalog = orleans.GetGrain<ICatalogGrain>(ICatalogGrain.Key);
+    readonly ICatalogGrain catalog = orleans.GetGrain<ICatalogGrain>(ICatalogGrain.Key);
 
     /// <response code="201">The new product is created with the returned id</response>
     [HttpPost(Products)]
@@ -28,7 +25,7 @@ public class CatalogController : ControllerBase
     [HttpGet(Products)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ImmutableArray<Product>> GetProducts([FromQuery] int[]? id = null)
-        => await (id is null ? catalog.GetAllProducts() :  catalog.GetCurrentProducts(id.ToImmutableArray()));
+        => await (id is null ? catalog.GetAllProducts() : catalog.GetCurrentProducts([.. id]));
 
     /// <response code="200">The product is updated</response>
     /// <response code="404">The product id is not found</response>
@@ -36,7 +33,11 @@ public class CatalogController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> UpdateProduct(Product product)
-        => (await catalog.UpdateProduct(product)) ? Ok() : NotFound(product.Id);
+        => product is null
+        ? BadRequest("product is required")
+        : (await catalog.UpdateProduct(product)) 
+        ? Ok()
+        : NotFound(product.Id);
 
     /// <response code="200">The product is deleted</response>
     /// <response code="404">The product id is not found</response>
@@ -44,5 +45,7 @@ public class CatalogController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> DeleteProduct(int id)
-        => (await catalog.DeleteProduct(id)) ? Ok() : NotFound(id);
+        => (await catalog.DeleteProduct(id)) 
+        ? Ok() 
+        : NotFound(id);
 }

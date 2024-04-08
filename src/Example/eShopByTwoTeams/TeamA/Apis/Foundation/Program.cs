@@ -24,5 +24,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-sealed partial class Program { } // Fix CA1852

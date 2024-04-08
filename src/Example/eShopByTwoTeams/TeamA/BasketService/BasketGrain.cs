@@ -9,7 +9,7 @@ sealed class BasketGrain : Grain, IBasketGrain
     internal sealed class State
     {
         [Id(0)] public bool HasBuyerId { get; set; }
-        [Id(1)] public Basket Basket { get; set; } = new Basket(-1, ImmutableArray<BasketItem>.Empty);
+        [Id(1)] public Basket Basket { get; set; } = new Basket(-1, []);
     }
 
     readonly IPersistentState<State> state;
@@ -46,7 +46,7 @@ sealed class BasketGrain : Grain, IBasketGrain
 
     public async Task EmptyBasket() 
     {
-        Basket = Basket with { Items = ImmutableArray<BasketItem>.Empty };
+        Basket = Basket with { Items = [] };
         await state.WriteStateAsync();
     }
 

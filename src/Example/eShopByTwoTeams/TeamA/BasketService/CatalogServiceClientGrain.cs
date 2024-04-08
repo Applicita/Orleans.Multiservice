@@ -12,15 +12,14 @@ interface ICatalogServiceClientGrain : IGrainWithIntegerKey
 [StatelessWorker]
 sealed class CatalogServiceClientGrain : Grain, ICatalogServiceClientGrain
 {
-    readonly CatalogServiceClient client;
-
-    public CatalogServiceClientGrain() => client = new("http://localhost:5113", new());
+    readonly CatalogServiceClient client = new("http://localhost:5113", new());
 
     public async Task<ImmutableArray<BasketItem>> UpdateFromCurrentProducts(ImmutableArray<BasketItem> basketItems)
     {
         var productIds = basketItems.Select(bi => bi.ProductId).ToImmutableArray();
         var products = await client.ProductsAllAsync(productIds);
-        List<BasketItem> updatedItems = new();
+
+        List<BasketItem> updatedItems = [];
         foreach (var item in basketItems)
         {
             var product = products.SingleOrDefault(p => p.Id == item.ProductId);
@@ -32,6 +31,6 @@ sealed class CatalogServiceClientGrain : Grain, ICatalogServiceClientGrain
                 UnitPrice = (decimal)product.Price,
             });
         }
-        return updatedItems.ToImmutableArray();
+        return [.. updatedItems];
     }
 }
