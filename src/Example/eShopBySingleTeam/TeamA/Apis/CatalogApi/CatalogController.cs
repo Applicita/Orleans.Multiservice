@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using Applicita.eShop.Contracts.CatalogContract;
+﻿using Applicita.eShop.Contracts.CatalogContract;
 
 namespace Applicita.eShop.Apis.CatalogApi;
 
@@ -19,7 +18,8 @@ public class CatalogController(IClusterClient orleans) : ControllerBase
         => CreatedAtAction(nameof(CreateProduct), await catalog.CreateProduct(product));
 
     /// <response code="200">
-    /// Products for all <paramref name="id"/>'s currently in the catalog are returned; unknown product id's are skipped.
+    /// Products for all <paramref name="id"/>'s currently in the catalog are returned;
+    /// unknown product id's are skipped.
     /// If no <paramref name="id"/>'s are specified, all products in the catalog are returned
     /// </response>
     [HttpGet(Products)]
@@ -33,9 +33,7 @@ public class CatalogController(IClusterClient orleans) : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult> UpdateProduct(Product product)
-        => product is null
-        ? BadRequest("product is required")
-        : (await catalog.UpdateProduct(product)) 
+        => await catalog.UpdateProduct(product)
         ? Ok()
         : NotFound(product.Id);
 

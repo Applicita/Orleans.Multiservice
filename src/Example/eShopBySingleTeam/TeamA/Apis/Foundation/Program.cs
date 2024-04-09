@@ -1,4 +1,5 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Applicita.eShop.Apis.CatalogApi;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,10 @@ if (app.Environment.IsDevelopment())
     _ = app.UseSwagger().UseSwaggerUI(options => options.EnableTryItOutByDefault());
 
 app.UseAuthorization();
+
+app.RegisterEndpoints(
+    typeof(CatalogEndpoints)
+);
 
 app.MapControllers();
 
