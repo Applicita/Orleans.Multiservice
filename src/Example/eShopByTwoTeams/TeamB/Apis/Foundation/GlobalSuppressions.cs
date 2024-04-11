@@ -6,3 +6,4 @@
 using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Reliability", "CA2007:Consider calling ConfigureAwait on the awaited task", Justification = "Not relevant in ASP.NET Core")]
+[assembly: SuppressMessage("Design", "CA1062:Validate arguments of public methods", Justification = "Public methods are only invoked by ASP.NET Core, which ensures non-null parameter values")]

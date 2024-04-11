@@ -9,7 +9,7 @@
         <AnalysisLevel>preview-All</AnalysisLevel>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
         
-        <AssemblyName>Applicita.eShop.$(MSBuildProjectName).TeamB</AssemblyName>
+        <AssemblyName>Applicita.eShop.$(MSBuildProjectName).TeamA</AssemblyName>
         <RootNamespace>Applicita.eShop.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     </PropertyGroup>
 
@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Contracts\Contracts.csproj" />
         <ProjectReference Include="..\CatalogService\CatalogService.csproj" />
     </ItemGroup>
 
