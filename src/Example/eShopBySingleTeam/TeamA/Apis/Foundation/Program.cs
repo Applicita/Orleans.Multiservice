@@ -1,5 +1,4 @@
-﻿using Applicita.eShop.Apis.CatalogApi;
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +22,8 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.RegisterEndpoints(
-    typeof(CatalogEndpoints)
+    typeof(Applicita.eShop.Apis.BasketApi.BasketsEndpoints),
+    typeof(Applicita.eShop.Apis.CatalogApi.CatalogEndpoints)
 );
 
 app.MapControllers();
