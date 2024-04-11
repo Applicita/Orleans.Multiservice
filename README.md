@@ -1,5 +1,5 @@
-# <img src="img/CSharp-Toolkit-Icon.png" alt="Backend Toolkit" width="64px" />Orleans.Multiservice
-Prevent microservices pain with logical service separation in a modular monolith for [Microsoft Orleans 7](https://learn.microsoft.com/en-us/dotnet/orleans/)
+﻿# <img src="img/CSharp-Toolkit-Icon.png" alt="Backend Toolkit" width="64px" />Orleans.Multiservice
+Prevent microservices pain with logical service separation in a modular monolith for [Microsoft Orleans 8](https://learn.microsoft.com/en-us/dotnet/orleans/)
 
 Orleans.Multiservice is an automated code structuring pattern for logical service separation within a Microsoft Orleans (micro)service.
 
@@ -37,18 +37,18 @@ Orleans.Multiservice consists of:
 > The code analyzer / unit tests will be added in a future release. Note that the multiservice pattern can be used without the analyzer by following the code structure of the template and the [pattern rules](#pattern-rules)
 
 ## Template usage
-1) On the command line, ensure that the [mcs-orleans-multiservice template](https://github.com/Applicita/Modern.CSharp.Templates#readme) is installed<br />(note that below is .NET 7 cli syntax; Orleans 7 requires .NET 7):
+1) On the command line, ensure that the [mcs-orleans-multiservice template](https://github.com/Applicita/Modern.CSharp.Templates#readme) is installed:
     ```
     dotnet new install Modern.CSharp.Templates
     ```
     **Note** that the `dotnet new mcs-orleans-multiservice` template requires **PowerShell** to be installed
 
-2) Type this command to read the documentation for the template parameters:
+2) Enter this command to read the documentation for the template parameters:
     ```
     dotnet new mcs-orleans-multiservice -h
     ```
 
-3) To create a new multiservice with one logical service in it, type e.g.:
+3) To create a new multiservice with one logical service in it, enter e.g.:
     ```
     dotnet new mcs-orleans-multiservice --RootNamespace Applicita.eShop --Multiservice TeamA --Logicalservice Catalog --allow-scripts Yes
     ```
@@ -82,8 +82,8 @@ Single team solution:
 - Debug [eShopTeamA.sln](https://github.com/Applicita/Orleans.Multiservice/tree/main/src/Example/eShopBySingleTeam/TeamA)
 
 Two team solution:
-- Ensure you have the [.NET OpenAPI tool](https://learn.microsoft.com/en-us/aspnet/core/web-api/microsoft.dotnet-openapi?view=aspnetcore-7.0) installed for .NET 7:
-  `dotnet tool install --global Microsoft.dotnet-openapi --version 7.0.0`
+- Ensure you have the latest [.NET OpenAPI tool](https://learn.microsoft.com/en-us/aspnet/core/web-api/microsoft.dotnet-openapi?view=aspnetcore-8.0) for .NET 8 installed:
+  `dotnet tool install --global Microsoft.dotnet-openapi`
   On build, this will generate the `CatalogServiceClient` from `CatalogService.json`
 - Debug [eShopTeamAof2.sln](https://github.com/Applicita/Orleans.Multiservice/tree/main/src/Example/eShopByTwoTeams/TeamA) and [eShopTeamBof2.sln](https://github.com/Applicita/Orleans.Multiservice/tree/main/src/Example/eShopByTwoTeams/TeamB)
 
@@ -102,7 +102,7 @@ These rules ensure that the pattern remains intact:
    `*Service -> Contracts`
 
 2) These types are only allowed in specific namespaces:<br />
-   All API controllers must be in or under `Apis.<service-name>Api`<br />
+   All API endpoints must be in or under `Apis.<service-name>Api`<br />
    All `public` grain contracts must be in or under `Contracts.<service-name>Contract`<br />
 
 3) References between types in these namespaces are **not** allowed:<br />
@@ -112,10 +112,3 @@ These rules ensure that the pattern remains intact:
 
 4) The `public` keyword in `*Service` projects is *only* used on interface member implementations, grain constructors and serializable members in a type.<br />
   This ensures that the only external code access is Orleans instantiating grains. It makes it safe to reference the service implementation projects in the silo host project (Apis) to let Orleans locate the grain implementations; the types in the service implementation projects will not be available in the silo host project.
-
-
-The Roslyn analyzer will allow rules to be configured in `.editorconfig`
-
-
-
-

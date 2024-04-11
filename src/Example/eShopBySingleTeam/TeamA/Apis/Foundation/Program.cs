@@ -7,7 +7,6 @@ builder.Host.UseOrleans((_, silo) => silo
     .AddMemoryGrainStorageAsDefault()
 );
 
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => {
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml"));
@@ -19,13 +18,9 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
     _ = app.UseSwagger().UseSwaggerUI(options => options.EnableTryItOutByDefault());
 
-app.UseAuthorization();
-
 app.RegisterEndpoints(
     typeof(Applicita.eShop.Apis.BasketApi.BasketsEndpoints),
     typeof(Applicita.eShop.Apis.CatalogApi.CatalogEndpoints)
 );
-
-app.MapControllers();
 
 app.Run();

@@ -11,7 +11,7 @@ public class CatalogEndpoints(IClusterClient orleans) : IEndpoints
 
     public void Register(IEndpointRouteBuilder routeBuilder)
     {
-        var group = routeBuilder.MapGroup("/mcatalog").WithTags("Catalog");
+        var group = routeBuilder.MapGroup("/catalog").WithTags("Catalog");
         _ = group.MapPost  (Products, CreateProduct);
         _ = group.MapGet   (Products, GetProducts  ).WithName(nameof(GetProducts));
         _ = group.MapPut   (Products, UpdateProduct);

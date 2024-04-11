@@ -8,7 +8,7 @@ public class BasketsEndpoints(IClusterClient orleans) : IEndpoints
 
     public void Register(IEndpointRouteBuilder routeBuilder)
     {
-        var group = routeBuilder.MapGroup("/mbaskets").WithTags("Baskets");
+        var group = routeBuilder.MapGroup("/baskets").WithTags("Baskets");
         _ = group.MapGet   (Basket, GetBasket);
         _ = group.MapPut   (""    , UpdateBasket);
         _ = group.MapDelete(Basket, EmptyBasket);
