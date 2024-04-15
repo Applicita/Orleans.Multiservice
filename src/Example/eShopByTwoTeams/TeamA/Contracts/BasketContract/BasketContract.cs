@@ -21,13 +21,7 @@ public interface IBasketGrain : IGrainWithStringKey
 }
 
 [GenerateSerializer, Immutable]
-public record Basket(
-    [property: Id(0)] int BuyerId,
-    [property: Id(1)] ImmutableArray<BasketItem> Items);
+public record Basket(int BuyerId, ImmutableArray<BasketItem> Items);
 
 [GenerateSerializer, Immutable]
-public record BasketItem(
-    [property: Id(0)] int ProductId,
-    [property: Id(1)] string ProductName,
-    [property: Id(2)] decimal UnitPrice,
-    [property: Id(3)] int Quantity);
+public record BasketItem(int ProductId, string ProductName, decimal UnitPrice, int Quantity);
