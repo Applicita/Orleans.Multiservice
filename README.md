@@ -82,8 +82,8 @@ Single team solution:
 - Debug [eShopTeamA.sln](https://github.com/Applicita/Orleans.Multiservice/tree/main/src/Example/eShopBySingleTeam/TeamA)
 
 Two team solution:
-- Ensure you have the latest [.NET OpenAPI tool](https://learn.microsoft.com/en-us/aspnet/core/web-api/microsoft.dotnet-openapi?view=aspnetcore-8.0) for .NET 8 installed:
-  `dotnet tool install --global Microsoft.dotnet-openapi`
+- Ensure you have the latest [.NET OpenAPI tool](https://learn.microsoft.com/en-us/aspnet/core/web-api/microsoft.dotnet-openapi?view=aspnetcore-8.0) for .NET 8 installed:<br />
+  `dotnet tool install --global Microsoft.dotnet-openapi`<br />
   On build, this will generate the `CatalogServiceClient` from `CatalogService.json`
 - Debug [eShopTeamAof2.sln](https://github.com/Applicita/Orleans.Multiservice/tree/main/src/Example/eShopByTwoTeams/TeamA) and [eShopTeamBof2.sln](https://github.com/Applicita/Orleans.Multiservice/tree/main/src/Example/eShopByTwoTeams/TeamB)
 
