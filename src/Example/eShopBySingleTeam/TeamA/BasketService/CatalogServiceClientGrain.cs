@@ -20,7 +20,7 @@ sealed class CatalogServiceClientGrain : Grain, ICatalogServiceClientGrain
         var productIds = basketItems.Select(bi => bi.ProductId).ToImmutableArray();
         var products = await catalog.GetCurrentProducts(productIds);
 
-        List<BasketItem> updatedItems = new();
+        List<BasketItem> updatedItems = [];
         foreach (var item in basketItems)
         {
             var product = products.SingleOrDefault(p => p.Id == item.ProductId);
@@ -32,6 +32,6 @@ sealed class CatalogServiceClientGrain : Grain, ICatalogServiceClientGrain
                 UnitPrice = product.Price,
             });
         }
-        return updatedItems.ToImmutableArray();
+        return [.. updatedItems];
     }
 }

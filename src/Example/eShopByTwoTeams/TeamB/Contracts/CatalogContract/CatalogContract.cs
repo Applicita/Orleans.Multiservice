@@ -1,4 +1,5 @@
 ﻿namespace Applicita.eShop.Contracts.CatalogContract;
+
 public interface ICatalogGrain : IGrainWithStringKey
 {
     const string Key = "";
@@ -23,4 +24,3 @@ public record Product(
     [property: Id(0)] int Id,
     [property: Id(1)] string Name,
     [property: Id(2)] decimal Price);
-
